@@ -2,4 +2,24 @@
 <resources>
     <item name="txtName" type="id" />
     <item name="gambar" type="id" />
+    <item name="recycleTeam" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="isiText" type="id" />
+    <item name="nextMatch" type="id" />
+    <item name="nextMatcgFragment" type="id" />
+    <item name="match" type="id" />
+    <item name="viewpager" type="id" />
+    <item name="nextRecycle" type="id" />
+    <item name="prevRecycle" type="id" />
+    <item name="nama_event" type="id" />
+    <item name="strSport" type="id" />
+    <item name="strHomeTeam" type="id" />
+    <item name="strAwayTeam" type="id" />
+    <item name="gambarHome" type="id" />
+    <item name="gambarAway" type="id" />
+    <item name="intHomeScore" type="id" />
+    <item name="intAwayScore" type="id" />
+    <item name="dateEventLocal" type="id" />
+    <item name="dateEvent" type="id" />
+    <item name="toolbar" type="id" />
 </resources>

@@ -13,45 +13,30 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ItemUI: AnkoComponent<Context> {
+class teamUI: AnkoComponent<Context> {
 
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         return cardView {
             lparams{
                 height = dip(wrapContent);
-                width = dip(180);
+                width = dip(80);
                 topMargin = dip(6);
                 bottomMargin = dip(6);
                 rightMargin = dip(3);
                 leftMargin = dip(3)
             }
 
-            padding = dip(20)
-            radius = 8f
+            radius = 5f
             cardElevation = dip(6).toFloat()
-
-            onClick { ctx.toast("Hello") }
-
 
             verticalLayout {
                 imageView {
                     id = R.id.gambar
 
                 }.lparams {
-                    height = dip(100)
+                    height = dip(80)
                     width = dip(matchParent)
                     gravity = Gravity.CENTER_HORIZONTAL
-                    padding = dip(20)
-                }
-
-                textView {
-                    id = R.id.txtName
-
-                }.lparams {
-                    width = wrapContent
-                    gravity = Gravity.CENTER_HORIZONTAL
-                    padding = dip(10)
-                    topMargin = dip(6);
                 }
             }
 

@@ -1,4 +1,4 @@
-# cobaAnko
+# Sub2
 
 Aplikasi Android menggunakan Kotlin 
 Komponen yang diterapkan:

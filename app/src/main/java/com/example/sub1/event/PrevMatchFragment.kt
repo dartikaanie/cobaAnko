@@ -12,9 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sub1.Detail.DetailLigaActivity
-import com.example.sub1.Detail.DetailPresenter
-import com.example.sub1.Detail.GetDetailLiga
-import com.example.sub1.Detail.GetTeam
 import com.example.sub1.DetailEvent.DetailEventActivity
 import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.EventsItem
@@ -24,11 +21,13 @@ import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.*
 
-class PrevMatchFragment : Fragment(), EventListContract.EventView {
+class PrevMatchFragment : Fragment(),  AnkoComponent<Context>,  EventListContract.EventView {
 
     private lateinit var presenter: EventPresenter
     private lateinit var adapter: EventAdapter
-    lateinit var detailActivity: DetailLigaActivity
+    private lateinit var detailActivity: DetailLigaActivity
+    private lateinit var progressBar: ProgressBar
+    lateinit var rvPrev : RecyclerView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -41,46 +40,14 @@ class PrevMatchFragment : Fragment(), EventListContract.EventView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        presenter = EventPresenter(this, GetMatch(detailActivity.liga.id.toString()), GetMatch(detailActivity.liga.id.toString()))
+        presenter = EventPresenter(this, GetPrevMatch(detailActivity.liga.id.toString()))
         presenter.requestDataFromServer()
-        return PrevMatchFragmentUI().createView(AnkoContext.create(requireContext(),this))
+        return createView(AnkoContext.create(requireContext()))
     }
 
-    private fun EventClicked(eventItem : EventsItem) {
-        eventItem.strAwayTeam?.let { toast(it) }
-        startActivity(intentFor<DetailEventActivity>("event" to eventItem))
-    }
-
-    override fun showProgress() {
-        Log.e("rshowProgress", "showProgress")
-    }
-
-    override fun hideProgress() {
-        Log.e("hideProgress", "hideProgress")
-    }
-
-    override fun setDataNextEvents(events: EventResponse) {
-    }
-
-    override fun setDataPrevEvents(events: EventResponse) {
-        adapter = events.events?.let { EventAdapter(it, { eventItem : EventsItem -> EventClicked(eventItem) }) }!!
-        val rvMatch = find<RecyclerView>(R.id.prevRecycle)
-        rvMatch.adapter = adapter
-    }
-
-    override fun onResponseFailure(throwable: Throwable) {
-        toast("Maaf Ada Kesalahan")
-    }
-}
-
-class PrevMatchFragmentUI : AnkoComponent<PrevMatchFragment> {
-
-    private lateinit var progressBar: ProgressBar
-    override fun createView(ui: AnkoContext<PrevMatchFragment>): View = with(ui) {
-        verticalLayout() {
-            recyclerView {
-                id = R.id.prevRecycle
-
+    override fun createView(ui: AnkoContext<Context>): View = with(ui){
+        verticalLayout {
+            rvPrev = recyclerView {
                 lparams {
                     width = matchParent
                     height = wrapContent
@@ -95,7 +62,60 @@ class PrevMatchFragmentUI : AnkoComponent<PrevMatchFragment> {
                 gravity = Gravity.CENTER_HORIZONTAL
             }
         }
+    }
 
+    private fun EventClicked(eventItem : EventsItem) {
+        eventItem.strAwayTeam?.let { toast(it) }
+        startActivity(intentFor<DetailEventActivity>("event" to eventItem))
+    }
+
+
+    override fun showProgress() {
+        Log.e("rshowProgress", "showProgress")
+    }
+
+    override fun hideProgress() {
+        Log.e("hideProgress", "hideProgress")
+    }
+
+    override fun setDataEvents(events: EventResponse?) {
+        val eventsList: MutableList<EventsItem> = mutableListOf()
+        events?.events?.let { eventsList.addAll(it) }
+        adapter = EventAdapter(eventsList, {
+            eventsItem: EventsItem -> EventClicked(eventsItem)
+        })
+        rvPrev.adapter = adapter
+    }
+
+
+    override fun onResponseFailure(throwable: Throwable) {
+        toast("Maaf Ada Kesalahan")
     }
 }
+
+//class PrevMatchFragmentUI : AnkoComponent<PrevMatchFragment> {
+//
+//    private lateinit var progressBar: ProgressBar
+//    override fun createView(ui: AnkoContext<PrevMatchFragment>): View = with(ui) {
+//        verticalLayout {
+//            recyclerView {
+//                id = R.id.prevRecycle
+//
+//                lparams {
+//                    width = matchParent
+//                    height = wrapContent
+//                    rightMargin = dip(8)
+//                    leftMargin = dip(8)
+//                }
+////                    adapter = eventNextAdapter
+//                layoutManager =
+//                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//            }
+//            progressBar = progressBar().lparams {
+//                gravity = Gravity.CENTER_HORIZONTAL
+//            }
+//        }
+//
+//    }
+//}
 

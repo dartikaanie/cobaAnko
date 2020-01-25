@@ -22,4 +22,13 @@
     <item name="dateEventLocal" type="id" />
     <item name="dateEvent" type="id" />
     <item name="toolbar" type="id" />
+    <item name="linearNav" type="id" />
+    <item name="searchMatch" type="id" />
+    <item name="recycleMatch" type="id" />
+    <item name="imageFavorit" type="id" />
+    <item name="recycle_match" type="id" />
+    <item name="cariMatch" type="id" />
+    <item name="progressBar_match" type="id" />
+    <item name="btmNav" type="id" />
+    <item name="recycle_fav" type="id" />
 </resources>

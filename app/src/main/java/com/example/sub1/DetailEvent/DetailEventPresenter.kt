@@ -20,9 +20,7 @@ class DetailEventPresenter : DetailEventContract.presenter, DetailEventContract.
     }
 
     override fun onRefreshButtonClick() {
-        if(detailEventView != null){
-            detailEventView!!.showProgress();
-        }
+        detailEventView?.showProgress()
         getDetailEvent?.getDetailEvent(this)
 
     }
@@ -32,13 +30,13 @@ class DetailEventPresenter : DetailEventContract.presenter, DetailEventContract.
     }
 
     override fun onFinished(detailEvent: DetailEvent) {
-        detailEventView?.setDataEvent(detailEvent);
-        detailEventView?.hideProgress();
+        detailEventView?.setDataEvent(detailEvent)
+        detailEventView?.hideProgress()
     }
 
     override fun onFailure(t: Throwable) {
-        detailEventView?.onResponseFailure(t);
-        detailEventView?.hideProgress();
+        detailEventView?.onResponseFailure(t)
+        detailEventView?.hideProgress()
     }
 
 

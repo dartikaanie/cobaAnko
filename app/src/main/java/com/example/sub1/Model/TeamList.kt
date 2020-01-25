@@ -5,7 +5,12 @@ import com.google.gson.annotations.SerializedName
 class TeamList {
 
     @SerializedName("teams")
-    var teams: List<TeamsItem>? = null
+    lateinit var teams: List<TeamsItem>
+
+    constructor(teams: List<TeamsItem>) {
+        this.teams = teams
+    }
+
 
     override fun toString(): String {
         return "Team{" +

@@ -18,25 +18,23 @@ class teamUI: AnkoComponent<Context> {
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         return cardView {
             lparams{
-                height = dip(wrapContent);
-                width = dip(80);
-                topMargin = dip(6);
-                bottomMargin = dip(6);
-                rightMargin = dip(3);
+                height = dip(50)
+                width = dip(80)
+                topMargin = dip(6)
+                bottomMargin = dip(6)
+                rightMargin = dip(3)
                 leftMargin = dip(3)
             }
 
             radius = 5f
             cardElevation = dip(6).toFloat()
+            padding = dip (5)
 
             verticalLayout {
                 imageView {
                     id = R.id.gambar
-
-                }.lparams {
-                    height = dip(80)
-                    width = dip(matchParent)
-                    gravity = Gravity.CENTER_HORIZONTAL
+                }.lparams{
+                    padding = dip (10)
                 }
             }
 

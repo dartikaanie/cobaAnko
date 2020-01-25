@@ -2,6 +2,7 @@ package com.example.sub1.Detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import com.bumptech.glide.Glide
 import org.jetbrains.anko.*
@@ -49,11 +50,11 @@ class DetailLigaActivity : AppCompatActivity(), DetailContract.DetailView, (Team
         detailUI.setContentView(this)
 
         liga = intent.getParcelableExtra<Liga>("liga")
-        toast(liga?.name.toString())
-        Glide.with(this).load(liga?.image).into(detailUI.gambar)
-        detailUI.txtName.text = liga?.name
+        toast(liga.name.toString())
+        Glide.with(this).load(liga.image).into(detailUI.gambar)
+        detailUI.txtName.text = liga.name
 
-        presenter = DetailPresenter(this, GetTeam(liga?.id.toString()), GetDetailLiga(liga?.id.toString()))
+        presenter = DetailPresenter(this, GetTeam(liga.id.toString()), GetDetailLiga(liga.id.toString()))
         if(CekKoneksi().cekInternet(this)){
             presenter.requestDataFromServer()
         }else{
@@ -68,6 +69,10 @@ class DetailLigaActivity : AppCompatActivity(), DetailContract.DetailView, (Team
 
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 
 
     override fun invoke(teamsItem: TeamsItem) {
@@ -85,7 +90,7 @@ class DetailLigaActivity : AppCompatActivity(), DetailContract.DetailView, (Team
 
 
     override fun setDataToList(teamList: TeamList) {
-       teamAdapter = teamList.teams?.let { TeamAdapter(it, this) }!!
+       teamAdapter = teamList.teams.let { TeamAdapter(it, this) }
         detailUI.recyclerTeam.adapter = teamAdapter
     }
 
@@ -98,6 +103,8 @@ class DetailLigaActivity : AppCompatActivity(), DetailContract.DetailView, (Team
 
     override fun onResponseFailure(throwable: Throwable) {
         toast("ada Kesalahan. Silakan Coba Lagi")
+        Log.e("ada Kesalahan", throwable.toString())
+        detailUI.isiText.text = "Tidak bisa memuat data. . ."
     }
 
 }
@@ -112,8 +119,8 @@ class DetalctivityUI : AnkoComponent<DetailLigaActivity>{
     lateinit var myViewPager : ViewPager
 
     override fun createView(ui: AnkoContext<DetailLigaActivity>): View = with(ui) {
-        return   relativeLayout() {
-            scrollView() {
+        return   relativeLayout {
+            scrollView {
                 verticalLayout{
                     verticalLayout {
                         backgroundColor = ContextCompat.getColor(context, R.color.backLogo)
@@ -126,9 +133,9 @@ class DetalctivityUI : AnkoComponent<DetailLigaActivity>{
                             }
                             gravity = Gravity.CENTER_HORIZONTAL
 
-                            cardView() {
+                            cardView {
                                 lparams {
-                                    height = dip(150);
+                                    height = dip(150)
                                     width = dip(150)
                                     topMargin = dip(10)
                                     gravity = Gravity.CENTER_VERTICAL
@@ -156,9 +163,9 @@ class DetalctivityUI : AnkoComponent<DetailLigaActivity>{
                                 }
 
                                 scrollView {
-                                    verticalLayout() {
+                                    verticalLayout {
                                         lparams(matchParent, wrapContent)
-                                        isiText = textView("KONTEN") {
+                                        isiText = textView {
                                             textColor = ContextCompat.getColor(
                                                 context,
                                                 R.color.colorPrimary
@@ -203,7 +210,7 @@ class DetalctivityUI : AnkoComponent<DetailLigaActivity>{
                         myViewPager = viewPager {
                             id = R.id.viewpager
                         }.lparams(matchParent, matchParent)
-                        (myViewPager!!.layoutParams as CoordinatorLayout.LayoutParams).behavior = AppBarLayout.ScrollingViewBehavior()
+                        (myViewPager.layoutParams as CoordinatorLayout.LayoutParams).behavior = AppBarLayout.ScrollingViewBehavior()
                     }
                 }
             }

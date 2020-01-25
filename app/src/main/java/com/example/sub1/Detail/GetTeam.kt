@@ -10,22 +10,22 @@ import retrofit2.Response
 
 class GetTeam (val idLiga : String) :  DetailContract.GetTeamIntractor {
 
-    lateinit var ligaDataService: LigaDataServices;
+    lateinit var ligaDataService: LigaDataServices
 
     override fun getTeamList(onFinishedListener: DetailContract.GetTeamIntractor.OnFinishedListener) {
-        ligaDataService = RetrofitInstances.getClient()?.create(LigaDataServices::class.java)!!
+        ligaDataService = RetrofitInstances.getClient().create(LigaDataServices::class.java)
 
         val call = ligaDataService.getLigaTeams(idLiga)
 
         call.enqueue(object : Callback<TeamList> {
             override fun onFailure(call: Call<TeamList>?, t: Throwable?) {
-                t?.let { onFinishedListener.onFailure(it) };
+                t?.let { onFinishedListener.onFailure(it) }
             }
 
             override fun onResponse(call: Call<TeamList>?, response: Response<TeamList>?) {
                 var teamList : TeamList? = response?.body()
-                teamList?.let { onFinishedListener.onFinished(it) };
+                teamList?.let { onFinishedListener.onFinished(it) }
             }
-        });
+        })
     }
 }

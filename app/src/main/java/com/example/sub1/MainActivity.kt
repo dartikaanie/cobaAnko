@@ -71,13 +71,13 @@ class MainActivity : AppCompatActivity(), (Liga) -> Unit {
         @SuppressLint("NewApi")
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         override fun createView(ui: AnkoContext<MainActivity>): View = with(ui) {
-            verticalLayout() {
+            verticalLayout {
                 appBarLayout {
                     lparams(width = matchParent, height = wrapContent)
 
-                    toolbar() {
+                    toolbar {
                         id = R.id.toolbar
-                        setTitle("LIGA DUNIA")
+                        title = "LIGA DUNIA"
                         setTitleTextColor(Color.WHITE)
                         lparams(width = matchParent, height = wrapContent)
 

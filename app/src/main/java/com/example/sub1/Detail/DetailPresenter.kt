@@ -19,13 +19,11 @@ class DetailPresenter : DetailContract.presenter, DetailContract.GetTeamIntracto
     }
 
     override fun onDestroy() {
-        detailView = null;
+        detailView = null
     }
 
     override fun onRefreshButtonClick() {
-        if(detailView != null){
-            detailView!!.showProgress();
-        }
+        detailView?.showProgress()
         getTeamList?.getTeamList(this)
         getTeamList?.getTeamList(this)
         getDetailLiga?.getDetail(this)
@@ -41,14 +39,14 @@ class DetailPresenter : DetailContract.presenter, DetailContract.GetTeamIntracto
     }
 
     override fun onFinished(teamList: TeamList) {
-        detailView?.setDataToList(teamList);
-        detailView?.hideProgress();
+        detailView?.setDataToList(teamList)
+        detailView?.hideProgress()
     }
 
 
     override fun onFailure(t: Throwable) {
-        detailView?.onResponseFailure(t);
-        detailView?.hideProgress();
+        detailView?.onResponseFailure(t)
+        detailView?.hideProgress()
     }
 
 

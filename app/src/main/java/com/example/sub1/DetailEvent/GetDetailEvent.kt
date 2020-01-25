@@ -11,24 +11,23 @@ import retrofit2.Response
 
 class GetDetailEvent (val idEvent: String):  DetailEventContract.GetDetailEvent {
 
-    lateinit var ligaDataService: LigaDataServices;
+    lateinit var ligaDataService: LigaDataServices
     override fun getDetailEvent(onFinishedListener: DetailEventContract.GetDetailEvent.OnFinishedListener) {
-        ligaDataService = RetrofitInstances.getClient()?.create(LigaDataServices::class.java)!!
+        ligaDataService = RetrofitInstances.getClient().create(LigaDataServices::class.java)
         val call = ligaDataService.getDetailEvent(idEvent)
 
-        Log.e("URL", call.request().url().toString())
 
         call.enqueue(object : Callback<DetailEventResponse> {
             override fun onFailure(call: Call<DetailEventResponse>?, t: Throwable?) {
-                t?.let { onFinishedListener.onFailure(it) };
-                Log.e("URL", t.toString())
+                t?.let { onFinishedListener.onFailure(it) }
+
             }
 
             override fun onResponse(call: Call<DetailEventResponse>?, response: Response<DetailEventResponse>?) {
                 var event : DetailEventResponse? = response?.body()
-                var eventItem : DetailEvent? = event?.events?.get(0);
-                eventItem?.let { onFinishedListener.onFinished(it) };
+                var eventItem : DetailEvent? = event?.events?.get(0)
+                eventItem?.let { onFinishedListener.onFinished(it) }
             }
-        });
+        })
     }
 }

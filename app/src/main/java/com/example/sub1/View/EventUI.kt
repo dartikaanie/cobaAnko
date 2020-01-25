@@ -18,11 +18,11 @@ class EventUI: AnkoComponent<Context> {
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         return cardView {
             lparams{
-                height = dip(wrapContent);
-                width = dip(400);
-                topMargin = dip(6);
-                bottomMargin = dip(6);
-                rightMargin = dip(3);
+                height = dip(wrapContent)
+                width = dip(400)
+                topMargin = dip(6)
+                bottomMargin = dip(6)
+                rightMargin = dip(3)
                 leftMargin = dip(3)
             }
             padding = dip(10)
@@ -47,9 +47,9 @@ class EventUI: AnkoComponent<Context> {
                     gravity = Gravity.CENTER_HORIZONTAL
                 }
 
-                linearLayout() {
+                linearLayout {
                     gravity = Gravity.CENTER_HORIZONTAL
-                    verticalLayout() {
+                    verticalLayout {
                         imageView {
                             id = R.id.gambarHome
                             imageResource = R.drawable.img
@@ -69,7 +69,7 @@ class EventUI: AnkoComponent<Context> {
                         margin = dip(10)
                     }
 
-                    textView() {
+                    textView {
                         id = R.id.intHomeScore
                         textSize = dip(12).toFloat()
                     }.lparams{
@@ -97,7 +97,7 @@ class EventUI: AnkoComponent<Context> {
                         margin = dip(3)
                     }
 
-                    verticalLayout() {
+                    verticalLayout {
                         imageView {
                             id = R.id.gambarAway
                             imageResource = R.drawable.img

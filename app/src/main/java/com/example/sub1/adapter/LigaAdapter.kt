@@ -1,5 +1,6 @@
 package com.example.sub1.adapter
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -10,6 +11,9 @@ import com.example.sub1.Model.Liga
 import com.example.sub1.R
 import com.example.sub1.View.ItemUI
 import org.jetbrains.anko.AnkoContext
+import com.bumptech.glide.request.RequestOptions
+
+
 
 
 class LigaAdapter (private var ligaList: List<Liga>, private val clickListener: (Liga) -> Unit)
@@ -17,7 +21,7 @@ class LigaAdapter (private var ligaList: List<Liga>, private val clickListener: 
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.bind(ligaList[position], clickListener )
+        holder.bind(ligaList[position], clickListener )
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +32,7 @@ class LigaAdapter (private var ligaList: List<Liga>, private val clickListener: 
         return ViewHolder(
             ItemUI().createView(
                 AnkoContext.create(
-                    parent!!.context
+                    parent.context
                 )
             )
         )
@@ -41,13 +45,18 @@ class LigaAdapter (private var ligaList: List<Liga>, private val clickListener: 
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-        val txtTitle: TextView = itemView?.findViewById(R.id.txtName) as TextView
-        val img: ImageView = itemView?.findViewById(R.id.gambar) as ImageView
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val txtTitle: TextView = itemView.findViewById(R.id.txtName) as TextView
+        val img: ImageView = itemView.findViewById(R.id.gambar) as ImageView
 
         fun bind(item: Liga, clickListener: (Liga) -> Unit){
-            Glide.with(itemView.context).load(item.image).into(img)
-            txtTitle.setText(item.name)
+            val options = RequestOptions()
+                .override(100,100)
+                .placeholder(R.drawable.img)
+                .error(R.drawable.img)
+             Glide.with(itemView.context).load(item.image).apply(options).into(img)
+//            Glide.with(itemView.context).load("https://www.thesportsdb.com/images/media/league/logo/r7q96i1557058508.png").thumbnail(0.5f).into(img)
+            txtTitle.text = item.name
 
             itemView.setOnClickListener { clickListener(item)}
         }

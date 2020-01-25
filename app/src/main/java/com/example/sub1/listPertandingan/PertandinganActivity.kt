@@ -1,40 +1,28 @@
 package com.example.sub1.listPertandingan
 
-import android.annotation.SuppressLint
 import android.graphics.Color
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sub1.DetailEvent.DetailEventActivity
 import com.example.sub1.MainActivity
-import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.EventsItem
 import com.example.sub1.Model.MatchResponse
 import com.example.sub1.R
 import com.example.sub1.Utils.invisible
 import com.example.sub1.Utils.visible
 import com.example.sub1.adapter.EventAdapter
-import com.example.sub1.adapter.LigaAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.design.appBarLayout
-import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.support.v4.intentFor
-import org.jetbrains.anko.support.v4.toast
 
 class PertandinganActivity : AppCompatActivity(), PertandinganContract.EventView  {
 
@@ -69,7 +57,7 @@ class PertandinganActivity : AppCompatActivity(), PertandinganContract.EventView
 
             override fun SetDataMatch(events: MatchResponse) {
                 pertandinganActivityUI.recycleMatch.visible()
-                    adapter = EventAdapter(events.event!!, { eventItem : EventsItem -> EventClicked(eventItem) })
+                    adapter = EventAdapter(events.event, { eventItem : EventsItem -> EventClicked(eventItem) })
                     pertandinganActivityUI.recycleMatch.adapter = adapter
 
             }
@@ -105,7 +93,7 @@ class PertandinganActivity : AppCompatActivity(), PertandinganContract.EventView
     }
 
     override fun SetDataMatch(events: MatchResponse) {
-        adapter = EventAdapter(events.event!!, { eventItem : EventsItem -> EventClicked(eventItem) })
+        adapter = EventAdapter(events.event, { eventItem : EventsItem -> EventClicked(eventItem) })
         pertandinganActivityUI.recycleMatch.adapter = adapter
         pertandinganActivityUI.progressBar.invisible()
     }
@@ -131,13 +119,13 @@ class PertandinganActivityUI : AnkoComponent<PertandinganActivity> {
     lateinit var noData : TextView
 
     override fun createView(ui: AnkoContext<PertandinganActivity>): View = with(ui) {
-        verticalLayout() {
+        verticalLayout {
             appBarLayout {
                 lparams(width = matchParent, height = wrapContent)
 
-                toolbar() {
+                toolbar {
                     id = R.id.toolbar
-                    setTitle("Pertandingan")
+                    title = "Pertandingan"
                     setTitleTextColor(Color.WHITE)
                     lparams(width = matchParent, height = wrapContent)
 
@@ -153,17 +141,20 @@ class PertandinganActivityUI : AnkoComponent<PertandinganActivity> {
                     }
                 }
             }
-            cardView(){
-                searchView = searchView(){
+            cardView {
+                searchView = searchView {
+                    id = R.id.cariMatch
                     queryHint = "Cari . . ."
                 }
             }.lparams(matchParent, wrapContent)
 
             recycleMatch = recyclerView {
+                id = R.id.recycle_match
                 lparams(width = matchParent, height = wrapContent)
                 layoutManager = LinearLayoutManager(ctx)
             }
             progressBar = progressBar().lparams {
+                id = R.id.progressBar_match
                 gravity = Gravity.CENTER_HORIZONTAL
             }
         }

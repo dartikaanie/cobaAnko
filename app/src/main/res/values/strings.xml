@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LIGA DUNIA</string>
+    <string name="pertandingan" />
+    <string name="favorites"> Favorit</string>
 
 
     <string-array name="club_name">
@@ -30,7 +32,7 @@
 
     <string-array name="club_image">
         <item>https://www.thesportsdb.com/images/media/league/badge/g5rxbr1517435561.png</item>
-        <item>"https://www.thesportsdb.com/images/media/league/logo/r7q96i1557058508.png</item>
+        <item>https://www.thesportsdb.com/images/media/league/logo/r7q96i1557058508.png</item>
         <item>https://www.thesportsdb.com/images/media/league/logo/tryvqw1467458861.png</item>
         <item>https://www.thesportsdb.com/images/media/league/logo/b84z7h1565091817.png</item>
         <item>https://www.thesportsdb.com/images/media/league/logo/usvwvq1422294541.png</item>
@@ -40,4 +42,9 @@
         <item>https://www.thesportsdb.com/images/media/league/logo/wvryqu1422054726.png</item>
         <item>https://www.thesportsdb.com/images/media/league/logo/wbvnh41552047787.png</item>
     </string-array>
+
+
+    <string name="liga">Liga</string>
+    <string name="match">Match</string>
+    <string name="title_activity_home">Home Activity</string>
 </resources>

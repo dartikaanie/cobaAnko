@@ -18,11 +18,11 @@ class ItemUI: AnkoComponent<Context> {
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         return cardView {
             lparams{
-                height = dip(wrapContent);
-                width = dip(180);
-                topMargin = dip(6);
-                bottomMargin = dip(6);
-                rightMargin = dip(3);
+                height = dip(wrapContent)
+                width = dip(180)
+                topMargin = dip(6)
+                bottomMargin = dip(6)
+                rightMargin = dip(3)
                 leftMargin = dip(3)
             }
 
@@ -39,7 +39,7 @@ class ItemUI: AnkoComponent<Context> {
 
                 }.lparams {
                     height = dip(100)
-                    width = dip(matchParent)
+                    width = dip(130)
                     gravity = Gravity.CENTER_HORIZONTAL
                     padding = dip(20)
                 }
@@ -51,7 +51,7 @@ class ItemUI: AnkoComponent<Context> {
                     width = wrapContent
                     gravity = Gravity.CENTER_HORIZONTAL
                     padding = dip(10)
-                    topMargin = dip(6);
+                    topMargin = dip(6)
                 }
             }
 

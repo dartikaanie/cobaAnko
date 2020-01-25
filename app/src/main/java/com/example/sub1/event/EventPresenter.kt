@@ -1,19 +1,16 @@
 package com.example.sub1.event
 
-import com.example.sub1.Detail.DetailContract
-import com.example.sub1.Detail.GetDetailLiga
+import android.util.Log
 import com.example.sub1.Model.EventResponse
 
-class EventPresenter : EventListContract.presenter, EventListContract.GetNextMatch.OnFinishedListener, EventListContract.GetPrevMatch.OnFinishedListener {
+class EventPresenter : EventListContract.presenter,  EventListContract.GetMatch.OnFinishedListener {
 
     private var EventView: EventListContract.EventView? = null
-    private var getEventsPrevList: EventListContract.GetPrevMatch? = null
-    private var getEventsNextList: EventListContract.GetNextMatch? = null
+    private var getEventsList: EventListContract.GetMatch? = null
 
-    constructor(EventView: EventListContract.EventView?, getEventsNextList : EventListContract.GetNextMatch, getEventsPrevList : EventListContract.GetPrevMatch) {
+    constructor(EventView: EventListContract.EventView?, getEventsList : EventListContract.GetMatch) {
         this.EventView = EventView
-        this.getEventsPrevList = getEventsPrevList
-        this.getEventsNextList = getEventsNextList
+        this.getEventsList = getEventsList
     }
 
     override fun onDestroy() {
@@ -21,27 +18,20 @@ class EventPresenter : EventListContract.presenter, EventListContract.GetNextMat
     }
 
     override fun onRefreshButtonClick() {
-        if(EventView != null){
-            EventView!!.showProgress();
-        }
-        getEventsNextList?.getNextMatch(this)
-        getEventsPrevList?.getPrevMatch(this)
+        EventView?.showProgress()
+        getEventsList?.getMatch(this)
     }
 
     override fun requestDataFromServer() {
-        getEventsNextList?.getNextMatch(this)
-        getEventsPrevList?.getPrevMatch(this)
+        getEventsList?.getMatch(this)
     }
 
     override fun onFailure(t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        EventView?.onResponseFailure(t)
     }
 
-    override fun onFinishedNext(eventList: EventResponse) {
-        EventView?.setDataNextEvents(eventList)
+    override fun onFinished(eventList: EventResponse) {
+        EventView?.setDataEvents(eventList)
     }
 
-    override fun onFinishedPrev(eventList: EventResponse) {
-        EventView?.setDataPrevEvents(eventList)
-    }
 }

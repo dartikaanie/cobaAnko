@@ -13,14 +13,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GetEvent(val id : String):  PertandinganContract.GetEvent {
-    lateinit var ligaDataService: LigaDataServices;
+    lateinit var ligaDataService: LigaDataServices
     override fun getEvent(onFinishedListener: PertandinganContract.GetEvent.OnFinishedListener) {
-        ligaDataService = RetrofitInstances.getClient()?.create(LigaDataServices::class.java)!!
+        ligaDataService = RetrofitInstances.getClient().create(LigaDataServices::class.java)
         val call = ligaDataService.getEvent(id)
 
        call.enqueue(object : Callback<MatchResponse> {
             override fun onFailure(call: Call<MatchResponse>?, t: Throwable?) {
-                t?.let { onFinishedListener.onFailure(it) };
+                t?.let { onFinishedListener.onFailure(it) }
             }
 
             override fun onResponse(call: Call<MatchResponse>?, response: Response<MatchResponse>?) {
@@ -38,7 +38,7 @@ class GetEvent(val id : String):  PertandinganContract.GetEvent {
                                 imgHomeTeam = response?.body()?.teams?.get(0)?.strTeamLogo.toString()
                                 item.imgHome = imgHomeTeam
                             }
-                        });
+                        })
 
                         lateinit var imgAwayTeam : String
                         val callAway = ligaDataService.getTeams(item.idAwayTeam.toString())
@@ -53,7 +53,7 @@ class GetEvent(val id : String):  PertandinganContract.GetEvent {
 
 
                             }
-                        });
+                        })
                     }
 
                 }else{
@@ -61,6 +61,6 @@ class GetEvent(val id : String):  PertandinganContract.GetEvent {
                 }
 //                event?.let { onFinishedListener.onFinishedNext(it) };
             }
-        });
+        })
     }
 }

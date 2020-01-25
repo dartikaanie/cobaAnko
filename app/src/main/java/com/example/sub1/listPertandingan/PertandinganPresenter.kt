@@ -1,5 +1,6 @@
 package com.example.sub1.listPertandingan
 
+import android.util.Log
 import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.MatchResponse
 
@@ -18,9 +19,7 @@ class PertandinganPresenter : PertandinganContract.presenter, PertandinganContra
     }
 
     override fun onRefreshButtonClick() {
-        if(EventView != null){
-            EventView!!.showProgress();
-        }
+        EventView?.showProgress()
         getEventsList?.getEvent(this)
     }
 
@@ -29,14 +28,12 @@ class PertandinganPresenter : PertandinganContract.presenter, PertandinganContra
     }
 
     override fun noData() {
-        if(EventView != null){
-            EventView!!.noDataResponse()
-        }
+        EventView?.noDataResponse()
 
     }
 
     override fun onFailure(t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       Log.e("Maaf Ada Kesalahan", t.toString())
     }
 
     override fun onFinished(eventList: MatchResponse) {

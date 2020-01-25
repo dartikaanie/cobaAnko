@@ -9,14 +9,14 @@ import com.example.sub1.BuildConfig.BASE_URL
 
 
 object RetrofitInstances {
-    private var retrofit: Retrofit? = null
-    fun getClient(): Retrofit? {
-        if (retrofit == null) {
+    private lateinit var retrofit: Retrofit
+    fun getClient(): Retrofit {
+
             retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-        }
+
         return retrofit
     }
 }

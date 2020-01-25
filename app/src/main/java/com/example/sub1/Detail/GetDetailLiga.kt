@@ -10,25 +10,25 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class GetDetailLiga (val idLiga : String)  :  DetailContract.GetDetailIga {
-    lateinit var ligaDataService: LigaDataServices;
+    lateinit var ligaDataService: LigaDataServices
     override fun getDetail(onFinishedListener: DetailContract.GetDetailIga.OnFinishedListener) {
-        ligaDataService = RetrofitInstances.getClient()?.create(LigaDataServices::class.java)!!
+        ligaDataService = RetrofitInstances.getClient().create(LigaDataServices::class.java)
 
         val call = ligaDataService.getDetailLiga(idLiga)
 
         /**Log the URL called*/
-        Log.e("URL Called detail", call.request().url().toString());
+
 
         call.enqueue(object : Callback<LigaResponse> {
             override fun onFailure(call: Call<LigaResponse>?, t: Throwable?) {
-                t?.let { onFinishedListener.onFailure(it) };
+                t?.let { onFinishedListener.onFailure(it) }
             }
 
             override fun onResponse(call: Call<LigaResponse>?, response: Response<LigaResponse>?) {
                 var liga : LigaResponse? = response?.body()
-                var ligaItem : Liga? = liga?.ligaList?.get(0);
-                ligaItem?.let { onFinishedListener.onFinished(it) };
+                var ligaItem : Liga? = liga?.ligaList?.get(0)
+                ligaItem?.let { onFinishedListener.onFinished(it) }
             }
-        });
+        })
     }
 }

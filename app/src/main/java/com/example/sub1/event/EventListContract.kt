@@ -13,28 +13,18 @@ interface EventListContract {
     interface EventView {
         fun showProgress()
         fun hideProgress()
-        fun setDataNextEvents( events : EventResponse)
-        fun setDataPrevEvents( events : EventResponse)
+        fun setDataEvents( events : EventResponse?)
         fun onResponseFailure(throwable: Throwable)
     }
 
-    interface GetNextMatch {
+    interface GetMatch {
 
         interface OnFinishedListener {
-            fun onFinishedNext(eventList: EventResponse)
+            fun onFinished(eventList: EventResponse)
             fun onFailure(t: Throwable)
         }
 
-        fun getNextMatch(onFinishedListener: OnFinishedListener)
+        fun getMatch(onFinishedListener: OnFinishedListener)
     }
 
-    interface GetPrevMatch {
-
-        interface OnFinishedListener {
-            fun onFinishedPrev(eventList: EventResponse)
-            fun onFailure(t: Throwable)
-        }
-
-        fun getPrevMatch(onFinishedListener: OnFinishedListener)
-    }
 }

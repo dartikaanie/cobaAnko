@@ -1,6 +1,5 @@
 package com.example.sub1.Detail
 
-import android.util.Log
 import com.example.sub1.Model.TeamList
 import com.example.sub1.rest.LigaDataServices
 import com.example.sub1.rest.RetrofitInstances

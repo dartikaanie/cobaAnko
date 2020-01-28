@@ -6,7 +6,7 @@ import com.example.sub1.Model.TeamList
 
 interface DetailContract {
 
-    interface presenter {
+    interface Presenter {
         fun onDestroy()
         fun onRefreshButtonClick()
         fun requestDataFromServer()

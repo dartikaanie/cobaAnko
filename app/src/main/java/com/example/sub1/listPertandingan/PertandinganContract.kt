@@ -1,6 +1,5 @@
 package com.example.sub1.listPertandingan
 
-import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.MatchResponse
 
 interface PertandinganContract {

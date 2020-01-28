@@ -4,7 +4,7 @@ import com.example.sub1.Model.DetailEvent
 
 interface DetailEventContract {
 
-    interface presenter {
+    interface Presenter {
         fun onDestroy()
         fun onRefreshButtonClick()
         fun requestDataFromServer()

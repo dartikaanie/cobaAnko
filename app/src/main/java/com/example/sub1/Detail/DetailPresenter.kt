@@ -1,10 +1,9 @@
 package com.example.sub1.Detail
 
-import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.Liga
 import com.example.sub1.Model.TeamList
 
-class DetailPresenter : DetailContract.presenter, DetailContract.GetTeamIntractor.OnFinishedListener, DetailContract.GetDetailIga.OnFinishedListener {
+class DetailPresenter : DetailContract.Presenter, DetailContract.GetTeamIntractor.OnFinishedListener, DetailContract.GetDetailIga.OnFinishedListener {
 
 
 

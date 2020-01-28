@@ -24,6 +24,10 @@ interface LigaDataServices{
     @GET( "api/v1/json/${BuildConfig.TSDB_API_KEY}/eventsnextleague.php")
     fun getNextEvents(@Query("id") idLiga: String): Call<EventResponse>
 
+    @GET( "api/v1/json/${BuildConfig.TSDB_API_KEY}/eventsnextleague.php")
+    fun getNextEvents2(@Query("id") idLiga: String): EventResponse
+
+
     @GET( "api/v1/json/${BuildConfig.TSDB_API_KEY}/lookupevent.php")
     fun getDetailEvent(@Query("id") idEvent: String): Call<DetailEventResponse>
 

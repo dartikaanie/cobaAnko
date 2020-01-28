@@ -3,15 +3,9 @@ package com.example.sub1.View
 import android.content.Context
 import android.view.Gravity
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.view.marginBottom
-import androidx.core.view.marginEnd
-import androidx.core.view.marginTop
 import com.example.sub1.R
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
-import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class EventUI: AnkoComponent<Context> {
 

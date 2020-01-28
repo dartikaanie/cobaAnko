@@ -1,11 +1,8 @@
 package com.example.sub1.listPertandingan
 
-import android.util.Log
-import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.EventsItem
 import com.example.sub1.Model.MatchResponse
 import com.example.sub1.Model.TeamList
-import com.example.sub1.event.EventListContract
 import com.example.sub1.rest.LigaDataServices
 import com.example.sub1.rest.RetrofitInstances
 import retrofit2.Call

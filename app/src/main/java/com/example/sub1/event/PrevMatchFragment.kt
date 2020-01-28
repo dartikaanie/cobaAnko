@@ -15,7 +15,6 @@ import com.example.sub1.Detail.DetailLigaActivity
 import com.example.sub1.DetailEvent.DetailEventActivity
 import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.EventsItem
-import com.example.sub1.R
 import com.example.sub1.adapter.EventAdapter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView

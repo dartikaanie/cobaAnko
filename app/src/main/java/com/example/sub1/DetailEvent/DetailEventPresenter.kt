@@ -5,7 +5,7 @@ import com.example.sub1.Model.DetailEvent
 import com.example.sub1.Model.TeamList
 import com.example.sub1.event.EventListContract
 
-class DetailEventPresenter : DetailEventContract.presenter, DetailEventContract.GetDetailEvent.OnFinishedListener  {
+class DetailEventPresenter : DetailEventContract.Presenter, DetailEventContract.GetDetailEvent.OnFinishedListener  {
 
     private var detailEventView : DetailEventContract.DetailEventView? = null
     private var getDetailEvent: DetailEventContract.GetDetailEvent? = null

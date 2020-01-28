@@ -1,6 +1,5 @@
 package com.example.sub1.Detail
 
-import android.util.Log
 import com.example.sub1.Model.Liga
 import com.example.sub1.Model.LigaResponse
 import com.example.sub1.rest.LigaDataServices

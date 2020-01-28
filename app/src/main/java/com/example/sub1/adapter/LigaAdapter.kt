@@ -1,6 +1,5 @@
 package com.example.sub1.adapter
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,9 +11,6 @@ import com.example.sub1.R
 import com.example.sub1.View.ItemUI
 import org.jetbrains.anko.AnkoContext
 import com.bumptech.glide.request.RequestOptions
-
-
-
 
 class LigaAdapter (private var ligaList: List<Liga>, private val clickListener: (Liga) -> Unit)
     : RecyclerView.Adapter<LigaAdapter.ViewHolder>() {

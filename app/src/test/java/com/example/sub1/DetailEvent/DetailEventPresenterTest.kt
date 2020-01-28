@@ -1,11 +1,7 @@
 package com.example.sub1.DetailEvent
 
-import com.example.sub1.Detail.DetailContract
-import com.example.sub1.Detail.DetailPresenter
-import com.example.sub1.Detail.GetDetailLiga
 import com.example.sub1.Model.*
 import com.example.sub1.rest.LigaDataServices
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -20,7 +16,7 @@ class DetailEventPresenterTest{
     @Mock
     private lateinit var getDetailEvent: DetailEventContract.GetDetailEvent
 
-    lateinit var presenter: DetailEventContract.presenter
+    lateinit var presenter: DetailEventContract.Presenter
 
 
     private val detailEvent: DetailEvent? = null

@@ -6,16 +6,13 @@ import com.example.sub1.Detail.GetDetailLiga
 import com.example.sub1.Model.Liga
 import com.example.sub1.Model.LigaResponse
 import com.example.sub1.Model.TeamList
-import com.example.sub1.Model.TeamsItem
 import com.example.sub1.rest.LigaDataServices
-import com.example.sub1.rest.RetrofitInstances
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import retrofit2.Call
-import okhttp3.ResponseBody
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import retrofit2.Response
@@ -33,8 +30,7 @@ class DetailPresenterTest {
     @Mock
     private lateinit var getTeamList: DetailContract.GetTeamIntractor
 
-    lateinit var presenter: DetailContract.presenter
-
+    lateinit var presenter: DetailContract.Presenter
 
     private val teams: TeamList? = null
     private val liga : LigaResponse? = null

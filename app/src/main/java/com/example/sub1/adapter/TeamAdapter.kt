@@ -2,15 +2,12 @@ package com.example.sub1.adapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.sub1.Model.Liga
 import com.example.sub1.Model.TeamsItem
 import com.example.sub1.R
-import com.example.sub1.View.ItemUI
-import com.example.sub1.View.teamUI
+import com.example.sub1.View.TeamUI
 import org.jetbrains.anko.AnkoContext
 
 
@@ -31,7 +28,7 @@ class TeamAdapter (private var teamList: List<TeamsItem>, private val clickListe
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            teamUI().createView(
+            TeamUI().createView(
                 AnkoContext.create(
                     parent.context
                 )

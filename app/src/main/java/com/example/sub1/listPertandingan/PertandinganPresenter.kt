@@ -1,7 +1,6 @@
 package com.example.sub1.listPertandingan
 
 import android.util.Log
-import com.example.sub1.Model.EventResponse
 import com.example.sub1.Model.MatchResponse
 
 class PertandinganPresenter : PertandinganContract.presenter, PertandinganContract.GetEvent.OnFinishedListener{

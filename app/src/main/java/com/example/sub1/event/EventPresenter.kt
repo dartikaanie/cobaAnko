@@ -1,6 +1,5 @@
 package com.example.sub1.event
 
-import android.util.Log
 import com.example.sub1.Model.EventResponse
 
 class EventPresenter : EventListContract.presenter,  EventListContract.GetMatch.OnFinishedListener {

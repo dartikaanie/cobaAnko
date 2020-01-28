@@ -4,7 +4,6 @@ import android.database.sqlite.SQLiteConstraintException
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -12,43 +11,23 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.sub1.DatabaseHelper.database
-import com.example.sub1.Detail.DetailLigaActivity
-import com.example.sub1.Detail.DetailPresenter
 import com.example.sub1.Detail.GetDetailEvent
-import com.example.sub1.Detail.GetTeam
 import com.example.sub1.Model.DetailEvent
 import com.example.sub1.Model.EventsItem
 import com.example.sub1.Model.Favorite
-import com.example.sub1.Model.Liga
 import com.example.sub1.R
 import com.example.sub1.Utils.invisible
 import com.example.sub1.Utils.visible
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.tabs.TabLayout
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
-import org.jetbrains.anko.design.appBarLayout
-import org.jetbrains.anko.design.coordinatorLayout
-import org.jetbrains.anko.design.themedTabLayout
-import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.support.v4.viewPager
-import org.w3c.dom.Text
-import kotlin.coroutines.CoroutineContext
 
 class DetailEventActivity : AppCompatActivity(), DetailEventContract.DetailEventView, View.OnClickListener {
 
@@ -188,7 +167,7 @@ class DetailEventActivity : AppCompatActivity(), DetailEventContract.DetailEvent
 
     override fun setDataEvent(event: DetailEvent) {
 
-        detailEventUi.nama_event.text =event.strEvent
+        detailEventUi.namaEvent.text =event.strEvent
         detailEventUi.strSport.text =event.strSport
         detailEventUi.dateEvent.text =event.dateEvent + "  " + event.getStrTime()
         detailEventUi.strHomeTeam.text =event.strHomeTeam
@@ -224,7 +203,7 @@ class DetailEventActivity : AppCompatActivity(), DetailEventContract.DetailEvent
 
 class DetailEventActivityUI : AnkoComponent<DetailEventActivity> {
 
-    lateinit var nama_event: TextView
+    lateinit var namaEvent: TextView
     lateinit var strSport: TextView
     lateinit var dateEvent: TextView
     lateinit var strHomeTeam: TextView
@@ -270,7 +249,7 @@ class DetailEventActivityUI : AnkoComponent<DetailEventActivity> {
 
 
                 verticalLayout {
-                    nama_event = textView("nama_event ") {
+                    namaEvent = textView("namaEvent ") {
                     }.lparams {
                         gravity = Gravity.CENTER_HORIZONTAL
                     }

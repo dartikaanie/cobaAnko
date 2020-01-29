@@ -2,6 +2,7 @@ package com.example.sub1.adapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -45,6 +46,8 @@ class TeamAdapter (private var teamList: List<TeamsItem>, private val clickListe
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.gambar) as ImageView
+        val namaTeam : TextView = itemView.findViewById(R.id.nama_tim) as TextView
+        val deskripsi : TextView = itemView.findViewById(R.id.deskripsi_team) as TextView
 
         fun bind(item: TeamsItem, clickListener: (TeamsItem) -> Unit){
             if(item.strTeamLogo != null){
@@ -54,7 +57,11 @@ class TeamAdapter (private var teamList: List<TeamsItem>, private val clickListe
                     .error(R.drawable.img)
                 Glide.with(itemView.context).load(item.strTeamLogo).apply(options).into(img)
                 itemView.setOnClickListener { clickListener(item)}
+            }else{
+                img.setImageResource(R.drawable.img)
             }
+            namaTeam.text = item.strTeam
+            deskripsi.text = item.strDescriptionEN?.substring(0,100) +" ..."
         }
     }
 

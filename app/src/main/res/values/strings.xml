@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">LIGA DUNIA</string>
-    <string name="pertandingan" />
     <string name="favorites"> Favorit</string>
 
 
@@ -46,5 +45,4 @@
 
     <string name="liga">Liga</string>
     <string name="match">Match</string>
-    <string name="title_activity_home">Home Activity</string>
 </resources>

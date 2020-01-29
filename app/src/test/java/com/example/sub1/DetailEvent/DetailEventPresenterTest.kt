@@ -1,6 +1,9 @@
 package com.example.sub1.DetailEvent
 
-import com.example.sub1.Model.*
+import com.example.sub1.Model.DetailEvent
+import com.example.sub1.Model.DetailEventResponse
+import com.example.sub1.fitur.DetailEvent.DetailEventContract
+import com.example.sub1.fitur.DetailEvent.DetailEventPresenter
 import com.example.sub1.rest.LigaDataServices
 import org.junit.Before
 import org.junit.Test

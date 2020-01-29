@@ -16,6 +16,12 @@
         android:title="@string/match" />
 
     <item
+        android:id="@+id/teams_navigation"
+        android:enabled="true"
+        android:icon="@drawable/team"
+        android:title="@string/match" />
+
+    <item
         android:id="@+id/favorit_navigation"
         android:icon="@drawable/ic_favorites"
         android:enabled="true"

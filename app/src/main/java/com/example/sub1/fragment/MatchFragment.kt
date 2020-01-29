@@ -10,14 +10,16 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sub1.DetailEvent.DetailEventActivity
 import com.example.sub1.Model.EventsItem
 import com.example.sub1.Model.MatchResponse
 import com.example.sub1.R
 import com.example.sub1.Utils.invisible
 import com.example.sub1.Utils.visible
 import com.example.sub1.adapter.EventAdapter
-import com.example.sub1.listPertandingan.*
+import com.example.sub1.fitur.DetailEvent.DetailEventActivity
+import com.example.sub1.fitur.listPertandingan.GetEvent
+import com.example.sub1.fitur.listPertandingan.PertandinganContract
+import com.example.sub1.fitur.listPertandingan.PertandinganPresenter
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -26,10 +28,8 @@ import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.toast
 
 
-
 class MatchFragment : Fragment(), PertandinganContract.EventView{
 
-    lateinit var matchFragmentUI: MatchFragmentUI
     lateinit var presenter : PertandinganPresenter
     lateinit var searchView : SearchView
     lateinit var progressBar : ProgressBar
@@ -42,7 +42,10 @@ class MatchFragment : Fragment(), PertandinganContract.EventView{
         savedInstanceState: Bundle?
     ): View? {
 //        progressBar = find<ProgressBar>(R.id.progressBar)
-        presenter = PertandinganPresenter(this, GetEvent("Arsenal_vs_Chelsea"))
+        presenter = PertandinganPresenter(
+            this,
+            GetEvent("Arsenal_vs_Chelsea")
+        )
         presenter.requestDataFromServer()
 
 
@@ -96,7 +99,10 @@ class MatchFragment : Fragment(), PertandinganContract.EventView{
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                presenter = PertandinganPresenter(this, GetEvent(query))
+                presenter = PertandinganPresenter(
+                    this,
+                    GetEvent(query)
+                )
                 presenter.requestDataFromServer()
                 return false
             }

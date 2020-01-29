@@ -31,4 +31,15 @@
     <item name="progressBar_match" type="id" />
     <item name="btmNav" type="id" />
     <item name="recycle_fav" type="id" />
+    <item name="nama_tim" type="id" />
+    <item name="deskripsi_team" type="id" />
+    <item name="nama_palyer" type="id" />
+    <item name="dateBorn" type="id" />
+    <item name="nama" type="id" />
+    <item name="played" type="id" />
+    <item name="loss" type="id" />
+    <item name="goalsfor" type="id" />
+    <item name="win" type="id" />
+    <item name="draw" type="id" />
+    <item name="searchTeam" type="id" />
 </resources>

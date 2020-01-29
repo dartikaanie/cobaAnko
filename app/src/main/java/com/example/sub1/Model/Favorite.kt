@@ -1,6 +1,5 @@
 package com.example.sub1.Model
 
-import com.google.gson.annotations.SerializedName
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,7 +40,7 @@ data class Favorite(
 
 
     companion object {
-        const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
+        const val TABLE_FAVORITE_EVENT: String = "TABLE_FAVORITE_EVENT"
         const val EVENT_ID: String = "EVENT_ID"
         const val STR_SPORT: String = "STR_SPORT"
         const val STR_EVENT: String = "STR_EVENT"

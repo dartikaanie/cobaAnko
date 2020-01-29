@@ -1,6 +1,10 @@
 package com.example.sub1.event
 
-import com.example.sub1.Model.*
+import com.example.sub1.Model.EventResponse
+import com.example.sub1.fitur.EventLiga.EventListContract
+import com.example.sub1.fitur.EventLiga.EventPresenter
+import com.example.sub1.fitur.EventLiga.GetMatch
+import com.example.sub1.fitur.EventLiga.GetPrevMatch
 import com.example.sub1.rest.LigaDataServices
 import org.junit.Before
 import org.junit.Test
@@ -10,8 +14,8 @@ import org.mockito.MockitoAnnotations
 import retrofit2.Call
 
 class EventPresenterTest{
-    lateinit var presenterNext: EventListContract.presenter
-    lateinit var presenterPrev: EventListContract.presenter
+    lateinit var presenterNext: EventListContract.Presenter
+    lateinit var presenterPrev: EventListContract.Presenter
 
     @Mock
     private lateinit var view: EventListContract.EventView
@@ -41,7 +45,7 @@ class EventPresenterTest{
 
     @Before
     fun setUp() {
-        var id = "4328"
+        val id = "4328"
         MockitoAnnotations.initMocks(this)
         getEventsNextList = GetMatch(id)
         presenterPrev = EventPresenter(view, getEventsPrevList)

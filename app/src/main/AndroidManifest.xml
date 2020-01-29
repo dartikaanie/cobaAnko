@@ -23,10 +23,11 @@
         </activity>
 
         <activity
-            android:name=".listPertandingan.PertandinganActivity"
+            android:name=".fitur.listPertandingan.PertandinganActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".DetailEvent.DetailEventActivity" />
-        <activity android:name=".Detail.DetailLigaActivity" />
+        <activity android:name=".fitur.DetailEvent.DetailEventActivity" />
+        <activity android:name=".fitur.DetailTeam.DetailTeamActivity" />
+        <activity android:name=".fitur.DetailLiga.DetailLigaActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

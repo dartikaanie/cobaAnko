@@ -11,11 +11,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.sub1.CekKoneksi
-import com.example.sub1.Detail.DetailLigaActivity
 import com.example.sub1.HomeActivity
 import com.example.sub1.Model.Liga
 import com.example.sub1.R
 import com.example.sub1.adapter.LigaAdapter
+import com.example.sub1.fitur.DetailLiga.DetailLigaActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.support.v4.intentFor

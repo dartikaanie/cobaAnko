@@ -3,21 +3,18 @@ package com.example.sub1
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.sub1.Detail.DetailLigaActivity
 import com.example.sub1.Model.Liga
 import com.example.sub1.adapter.LigaAdapter
-import com.example.sub1.listPertandingan.PertandinganActivity
+import com.example.sub1.fitur.DetailLiga.DetailLigaActivity
+import com.example.sub1.fitur.listPertandingan.PertandinganActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.toolbar
 import org.jetbrains.anko.design.appBarLayout
-import org.jetbrains.anko.design.coordinatorLayout
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 

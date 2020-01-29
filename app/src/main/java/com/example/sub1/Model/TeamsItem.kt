@@ -1,32 +1,37 @@
 package com.example.sub1.Model
 
+
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-class TeamsItem {
-
-
+@Parcelize
+class TeamsItem(
 
     @SerializedName("strTeam")
-    var strTeam: String? = null
+    var strTeam: String? = null,
 
     @SerializedName("strCountry")
-    var strCountry: String? = null
+    var strCountry: String? = null,
 
     @SerializedName("strTeamLogo")
-    var strTeamLogo: String? = null
+    var strTeamLogo: String? = null,
 
     @SerializedName("strLeague")
-    var strLeague: String? = null
+    var strLeague: String? = null,
 
     @SerializedName("idTeam")
-    var idTeam: String? = null
+    var idTeam: String? = null,
 
     @SerializedName("intLoved")
-    var intLoved: Any? = null
+    var intLoved: String? = null,
+
+    @SerializedName("intFormedYear")
+    var intFormedYear: String? = null,
 
     @SerializedName("strDescriptionEN")
     var strDescriptionEN: String? = null
-
+) : Parcelable  {
 
 
     override fun toString(): String {

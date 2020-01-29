@@ -1,36 +1,40 @@
 package com.example.sub1
 
-import com.example.sub1.Detail.DetailContract
-import com.example.sub1.Detail.DetailPresenter
-import com.example.sub1.Detail.GetDetailLiga
 import com.example.sub1.Model.Liga
 import com.example.sub1.Model.LigaResponse
 import com.example.sub1.Model.TeamList
+import com.example.sub1.fitur.DetailLiga.DetailContract
+import com.example.sub1.fitur.DetailLiga.DetailPresenter
+import com.example.sub1.fitur.DetailLiga.GetDetailLiga
+import com.example.sub1.fitur.TeamsLiga.TeamsLigaContract
+import com.example.sub1.fitur.TeamsLiga.TeamsLigaPresenter
 import com.example.sub1.rest.LigaDataServices
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
-import retrofit2.Call
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
+import org.mockito.MockitoAnnotations
+import retrofit2.Call
 import retrofit2.Response
-
-
 
 
 class DetailPresenterTest {
     @Mock
-    private lateinit var view: DetailContract.DetailView
+    private lateinit var viewDetail: DetailContract.DetailView
+
+    @Mock
+    private lateinit var viewTeam: TeamsLigaContract.TeamsLigaView
 
     @Mock
     private lateinit var getDetailLiga: GetDetailLiga
 
     @Mock
-    private lateinit var getTeamList: DetailContract.GetTeamIntractor
+    private lateinit var getTeamList: TeamsLigaContract.GetTeamIntractor
 
     lateinit var presenter: DetailContract.Presenter
+    lateinit var presenterTeamsLiga: TeamsLigaContract.Presenter
 
     private val teams: TeamList? = null
     private val liga : LigaResponse? = null
@@ -49,7 +53,10 @@ class DetailPresenterTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = DetailPresenter(view, getTeamList, getDetailLiga)
+        presenter =
+            DetailPresenter(viewDetail, getDetailLiga)
+        presenterTeamsLiga =
+            TeamsLigaPresenter(viewTeam, getTeamList)
         apiServices = Mockito.mock<LigaDataServices>(LigaDataServices::class.java)
     }
 
@@ -68,7 +75,7 @@ class DetailPresenterTest {
         var ligaItem : Liga? = liga?.ligaList?.get(0)
 
 
-        ligaItem?.let { verify(view).setDetaiLiga(it) }
-        teamList?.let { verify(view).setDataToList(it) }
+        ligaItem?.let { verify(viewDetail).setDetaiLiga(it) }
+        teamList?.let { verify(viewTeam).setDataToList(it) }
     }
 }

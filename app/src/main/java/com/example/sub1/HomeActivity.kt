@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.sub1.fragment.FavoritFragment
 import com.example.sub1.fragment.LigaFragment
 import com.example.sub1.fragment.MatchFragment
+import com.example.sub1.fragment.TeamsFragment
 import org.jetbrains.anko.*
 import org.jetbrains.anko.design.bottomNavigationView
 
@@ -54,6 +55,9 @@ class HomeActivity : AppCompatActivity() {
                         }
                         R.id.match_navigation -> {
                             loadFragment(MatchFragment(), savedInstanceState)
+                        }
+                        R.id.teams_navigation -> {
+                            loadFragment(TeamsFragment(), savedInstanceState)
                         }
                         R.id.favorit_navigation -> {
                             loadFragment(FavoritFragment(), savedInstanceState)

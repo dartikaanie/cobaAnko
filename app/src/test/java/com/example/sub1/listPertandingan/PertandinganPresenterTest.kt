@@ -3,8 +3,9 @@ package com.example.sub1.listPertandingan
 import com.example.sub1.Model.EventsItem
 import com.example.sub1.Model.MatchResponse
 import com.example.sub1.Model.TeamList
+import com.example.sub1.fitur.listPertandingan.PertandinganContract
+import com.example.sub1.fitur.listPertandingan.PertandinganPresenter
 import com.example.sub1.rest.LigaDataServices
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -39,7 +40,8 @@ class PertandinganPresenterTest{
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter = PertandinganPresenter(view, getEventsList)
+        presenter =
+            PertandinganPresenter(view, getEventsList)
         apiServices = Mockito.mock<LigaDataServices>(LigaDataServices::class.java)
     }
 
@@ -49,8 +51,8 @@ class PertandinganPresenterTest{
         val teamList : Call<TeamList>? = null
         `when`(apiServices?.getEvent(id)).thenReturn(mockCallEventsItem)
         val match = Response.success(matchResponse).body()
-        var teamsHome : TeamList? = null
-        var teamsAway : TeamList? = null
+        val teamsHome : TeamList? = null
+        val teamsAway : TeamList? = null
         val eventList: List<EventsItem>? = match?.event?.filter { it.strSport == "Soccer" }
         if (eventList != null) {
             for(item in eventList){
